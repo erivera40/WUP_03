@@ -36,10 +36,10 @@ $H_A$: The alternative hypothesis is that there is a difference in alcohol consu
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
+
+
+
 ## Now add in boxplot
-
-
-Based on the box plot, people that sit in the back consume more alcohol than people who sit in the front or in the middle. 
 
 ```{r}
 basicCN + geom_boxplot()
@@ -52,7 +52,16 @@ basicCN + geom_boxplot()
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
+
+Based on the box plot, people that sit in the back consume more alcohol than people who sit in the front or in the middle. 
+
+
 ## Numerical Summarys 
+
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+Based on the numerical summary evidence shows that on average people who sit in the back consume 8.5 drinks a week. On average people who sit in the front and in the middle consume 1-3 drinks a week.  
 
 ## Inferential Tests
 
