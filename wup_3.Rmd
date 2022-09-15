@@ -17,20 +17,15 @@ davisdata <- read.csv(file="UCDavis.csv")
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
 
-## Now with ggplot - first select the basic data
 
 ##  methods  
-Seat is a categorical variable.
-
-Alcohol is a numerical variable. 
-
-For this problem we explain alcohol consumption based on where people sit.
-
-Therefore the helper file is the numerical categorical file. 
+Seat is a categorical variable. Alcohol is a numerical variable. For this problem we explain alcohol consumption based on where people sit. Therefore the helper file is the numerical categorical file. 
 
 $H_0$: The null hypothesis is there is no difference in alcohol consumption based on where you sit.  
 
-$H_A$: The alternative hypothesis is that there is a difference in alcohol consumption based on where you sit.   
+$H_A$: The alternative hypothesis is that there is a difference in alcohol consumption based on where you sit.  
+
+## Now with ggplot - first select the basic data
 
 
 ```{r}
@@ -38,13 +33,8 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
 
 
-
 ## Now add in boxplot
 
-```{r}
-basicCN + geom_boxplot()
-```
-  
   
 ### get fancy  
 
@@ -65,6 +55,25 @@ Based on the numerical summary evidence shows that on average people who sit in 
 
 ## Inferential Tests
 
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+
+
+```
+
+
+Based on the inferential tests the p-value is 0.000116 which is less than 0.5. This means we reject the null hypothesis. 
+
+```{r}
+#we specify the margins starting at the bottom and proceeding clockwise - thus 8.7 is the left side margin to hold the names of the factors
+par(mar = c(3, 8.7, 2, 2))
+plot(TukeyHSD(model1),las=2)
+```
+
+
+
 ## Conclusions
 
+Based on the evidence shown in the aov we reject the null hypothesis because the p-value is 0.0000116 which is less than 0.05.People who sit in the back consume more alcohol than people who sit in the front and middle. Further, from the Tukey test there us no difference in alcohol consumption in seats middle to front. 
 
