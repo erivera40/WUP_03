@@ -38,6 +38,9 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
 ## Now add in boxplot
 
+
+Based on the box plot, people that sit in the back consume more alcohol than people who sit in the front or in the middle. 
+
 ```{r}
 basicCN + geom_boxplot()
 ```
