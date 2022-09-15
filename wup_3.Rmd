@@ -19,6 +19,20 @@ davisdata <- read.csv(file="UCDavis.csv")
 
 ## Now with ggplot - first select the basic data
 
+##  methods  
+Seat is a categorical variable.
+
+Alcohol is a numerical variable. 
+
+For this problem we explain alcohol consumption based on where people sit.
+
+Therefore the helper file is the numerical categorical file. 
+
+$H_0$: The null hypothesis is there is no difference in alcohol consumption based on where you sit.  
+
+$H_A$: The alternative hypothesis is that there is a difference in alcohol consumption based on where you sit.   
+
+
 ```{r}
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
